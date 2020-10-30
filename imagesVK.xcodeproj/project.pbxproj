@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1BDF326CF44AD0EAF6DDD995 /* Pods_imagesVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */; };
+		B92F837C254C0292006C2411 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F837B254C0292006C2411 /* AuthService.swift */; };
+		B92F8381254C0324006C2411 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F8380254C0324006C2411 /* StringConstants.swift */; };
 		B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A429254BE98000B25B84 /* AppDelegate.swift */; };
 		B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A42B254BE98000B25B84 /* SceneDelegate.swift */; };
 		B9F2A42E254BE98000B25B84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A42D254BE98000B25B84 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		563BEADC035D51F25BC8C98D /* Pods-imagesVK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.release.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.release.xcconfig"; sourceTree = "<group>"; };
 		ACC8E98104BCEAF8772507F7 /* Pods-imagesVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.debug.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.debug.xcconfig"; sourceTree = "<group>"; };
+		B92F837B254C0292006C2411 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		B92F8380254C0324006C2411 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		B9F2A426254BE98000B25B84 /* imagesVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imagesVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F2A429254BE98000B25B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9F2A42B254BE98000B25B84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B92F837E254C0297006C2411 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B92F837B254C0292006C2411 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B92F8383254C033B006C2411 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B92F8380254C0324006C2411 /* StringConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		B9F2A41D254BE98000B25B84 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				B9F2A44C254BF9A300B25B84 /* Story */,
-				B9F2A450254BF9BE00B25B84 /* Main */,
+				B9F2A450254BF9BE00B25B84 /* Main file */,
+				B92F837E254C0297006C2411 /* Services */,
+				B92F8383254C033B006C2411 /* Constants */,
 			);
 			path = imagesVK;
 			sourceTree = "<group>";
@@ -83,7 +105,7 @@
 			path = Story;
 			sourceTree = "<group>";
 		};
-		B9F2A450254BF9BE00B25B84 /* Main */ = {
+		B9F2A450254BF9BE00B25B84 /* Main file */ = {
 			isa = PBXGroup;
 			children = (
 				B9F2A429254BE98000B25B84 /* AppDelegate.swift */,
@@ -92,7 +114,7 @@
 				B9F2A434254BE98700B25B84 /* LaunchScreen.storyboard */,
 				B9F2A437254BE98700B25B84 /* Info.plist */,
 			);
-			path = Main;
+			path = "Main file";
 			sourceTree = "<group>";
 		};
 		C6965DB5C1AB7AB308424875 /* Pods */ = {
@@ -218,9 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B92F8381254C0324006C2411 /* StringConstants.swift in Sources */,
 				B9F2A42E254BE98000B25B84 /* ViewController.swift in Sources */,
 				B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */,
 				B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */,
+				B92F837C254C0292006C2411 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

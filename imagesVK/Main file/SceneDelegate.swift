@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
 final class SceneDelegate: UIResponder {
     
@@ -23,6 +24,13 @@ final class SceneDelegate: UIResponder {
         
         window?.rootViewController = makeNavController()
         window?.makeKeyAndVisible()
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            VKSdk.processOpen(url, fromApplication: UIApplication.OpenURLOptionsKey.sourceApplication.rawValue)
+            
+        }
     }
 }
 
