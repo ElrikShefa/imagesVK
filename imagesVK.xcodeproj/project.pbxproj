@@ -10,6 +10,10 @@
 		1BDF326CF44AD0EAF6DDD995 /* Pods_imagesVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */; };
 		B92F837C254C0292006C2411 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F837B254C0292006C2411 /* AuthService.swift */; };
 		B92F8381254C0324006C2411 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F8380254C0324006C2411 /* StringConstants.swift */; };
+		B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E20254C22E50066EF9A /* AuthViewController.swift */; };
+		B94A4E28254C24D50066EF9A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E27254C24D50066EF9A /* BaseVC.swift */; };
+		B94A4E2B254C250D0066EF9A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E2A254C250D0066EF9A /* Array+Extension.swift */; };
+		B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E2D254C25320066EF9A /* Collection+Extension.swift */; };
 		B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A429254BE98000B25B84 /* AppDelegate.swift */; };
 		B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A42B254BE98000B25B84 /* SceneDelegate.swift */; };
 		B9F2A42E254BE98000B25B84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A42D254BE98000B25B84 /* ViewController.swift */; };
@@ -22,6 +26,10 @@
 		ACC8E98104BCEAF8772507F7 /* Pods-imagesVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.debug.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.debug.xcconfig"; sourceTree = "<group>"; };
 		B92F837B254C0292006C2411 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B92F8380254C0324006C2411 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		B94A4E20254C22E50066EF9A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		B94A4E27254C24D50066EF9A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		B94A4E2A254C250D0066EF9A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		B94A4E2D254C25320066EF9A /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		B9F2A426254BE98000B25B84 /* imagesVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imagesVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F2A429254BE98000B25B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9F2A42B254BE98000B25B84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +76,47 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		B94A4E1E254C22BB0066EF9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9F2A42D254BE98000B25B84 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B94A4E23254C23600066EF9A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B94A4E30254C25850066EF9A /* BaseVC */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B94A4E24254C23770066EF9A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B94A4E2A254C250D0066EF9A /* Array+Extension.swift */,
+				B94A4E2D254C25320066EF9A /* Collection+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B94A4E30254C25850066EF9A /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				B94A4E27254C24D50066EF9A /* BaseVC.swift */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		B94A4E32254C259A0066EF9A /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				B94A4E20254C22E50066EF9A /* AuthViewController.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
 		B9F2A41D254BE98000B25B84 = {
 			isa = PBXGroup;
 			children = (
@@ -90,8 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				B9F2A44C254BF9A300B25B84 /* Story */,
-				B9F2A450254BF9BE00B25B84 /* Main file */,
 				B92F837E254C0297006C2411 /* Services */,
+				B9F2A450254BF9BE00B25B84 /* Main files */,
+				B94A4E23254C23600066EF9A /* Helpers */,
+				B94A4E24254C23770066EF9A /* Extension */,
 				B92F8383254C033B006C2411 /* Constants */,
 			);
 			path = imagesVK;
@@ -100,12 +151,13 @@
 		B9F2A44C254BF9A300B25B84 /* Story */ = {
 			isa = PBXGroup;
 			children = (
-				B9F2A42D254BE98000B25B84 /* ViewController.swift */,
+				B94A4E32254C259A0066EF9A /* AuthView */,
+				B94A4E1E254C22BB0066EF9A /* ViewController */,
 			);
 			path = Story;
 			sourceTree = "<group>";
 		};
-		B9F2A450254BF9BE00B25B84 /* Main file */ = {
+		B9F2A450254BF9BE00B25B84 /* Main files */ = {
 			isa = PBXGroup;
 			children = (
 				B9F2A429254BE98000B25B84 /* AppDelegate.swift */,
@@ -114,7 +166,7 @@
 				B9F2A434254BE98700B25B84 /* LaunchScreen.storyboard */,
 				B9F2A437254BE98700B25B84 /* Info.plist */,
 			);
-			path = "Main file";
+			path = "Main files";
 			sourceTree = "<group>";
 		};
 		C6965DB5C1AB7AB308424875 /* Pods */ = {
@@ -244,7 +296,11 @@
 				B9F2A42E254BE98000B25B84 /* ViewController.swift in Sources */,
 				B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */,
 				B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */,
+				B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */,
+				B94A4E28254C24D50066EF9A /* BaseVC.swift in Sources */,
 				B92F837C254C0292006C2411 /* AuthService.swift in Sources */,
+				B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */,
+				B94A4E2B254C250D0066EF9A /* Array+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6G87NLXB66;
-				INFOPLIST_FILE = "$(SRCROOT)/imagesVK/Main/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/imagesVK/Main files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6G87NLXB66;
-				INFOPLIST_FILE = "$(SRCROOT)/imagesVK/Main/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/imagesVK/Main files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
