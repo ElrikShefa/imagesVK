@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ImageViewController.swift
 //  imagesVK
 //
 //  Created by Матвей Чернышев on 30.10.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: BaseVC {
+final class ImageViewController: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +16,6 @@ class ViewController: BaseVC {
 
 
 }
+
+
 

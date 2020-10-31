@@ -11,6 +11,12 @@ import VK_ios_sdk
 final class SceneDelegate: UIResponder {
     
     var window: UIWindow?
+    var authService: AuthService!
+    
+    static func shared() -> SceneDelegate {
+        let scene = UIApplication.shared.connectedScenes.first
+        return (scene?.delegate as? SceneDelegate)!
+    }
     
     func scene(
         _ scene: UIScene,
@@ -22,7 +28,10 @@ final class SceneDelegate: UIResponder {
         
         window = .init(windowScene: windowScene)
         
-        window?.rootViewController = makeNavController()
+        authService = AuthService()
+        authService.delegate = self
+        
+        window?.rootViewController = AuthViewController()
         window?.makeKeyAndVisible()
     }
     
@@ -36,9 +45,27 @@ final class SceneDelegate: UIResponder {
 
 extension SceneDelegate: UIWindowSceneDelegate {}
 
+// MARK:- protocol AuthServiceDelegate
+extension SceneDelegate: AuthServiceDelegate {
+    
+    func authServiceShouldShow(viewController: UIViewController) {
+        print(#function)
+        window?.rootViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    func authServiceSignIn() {
+        print(#function)
+        window?.rootViewController? = makeNavController()
+    }
+    
+    func authServiceSignInDidFail() {
+        print(#function)
+    }
+}
+
 private extension SceneDelegate {
     
     func makeNavController() -> UIViewController {
-        return UINavigationController(rootViewController: ViewController())
+        return ImageViewController()
     }
 }

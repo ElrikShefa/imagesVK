@@ -12,6 +12,8 @@ struct StringConstants {
     
     static let appID = "7645321"
     
+    static let signIn = "sign in VK"
+    
     static let title = "Messages"
     static let loading = "loading..."
     static let nothingFound = "Nothing found"
