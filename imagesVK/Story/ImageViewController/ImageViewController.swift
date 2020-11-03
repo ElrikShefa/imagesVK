@@ -8,10 +8,13 @@
 import UIKit
 
 final class ImageViewController: BaseVC {
+    
+private let urlService = URLService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        urlService.getFeed()
     }
 
 

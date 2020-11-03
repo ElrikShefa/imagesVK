@@ -14,6 +14,8 @@
 		B94A4E28254C24D50066EF9A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E27254C24D50066EF9A /* BaseVC.swift */; };
 		B94A4E2B254C250D0066EF9A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E2A254C250D0066EF9A /* Array+Extension.swift */; };
 		B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E2D254C25320066EF9A /* Collection+Extension.swift */; };
+		B98F411525513D3A007A4187 /* VK_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F411425513D3A007A4187 /* VK_API.swift */; };
+		B98F411A25514BED007A4187 /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F411925514BED007A4187 /* URLService.swift */; };
 		B9D67F98254C2AA400C2ED52 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D67F97254C2AA400C2ED52 /* View+Extension.swift */; };
 		B9D67F9F254C3C8400C2ED52 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D67F9E254C3C8400C2ED52 /* Color+Extension.swift */; };
 		B9D67FA2254C443F00C2ED52 /* AuthServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D67FA1254C443F00C2ED52 /* AuthServiceDelegate.swift */; };
@@ -33,6 +35,8 @@
 		B94A4E27254C24D50066EF9A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		B94A4E2A254C250D0066EF9A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		B94A4E2D254C25320066EF9A /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		B98F411425513D3A007A4187 /* VK_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VK_API.swift; sourceTree = "<group>"; };
+		B98F411925514BED007A4187 /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		B9D67F97254C2AA400C2ED52 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		B9D67F9E254C3C8400C2ED52 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B9D67FA1254C443F00C2ED52 /* AuthServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceDelegate.swift; sourceTree = "<group>"; };
@@ -69,8 +73,7 @@
 		B92F837E254C0297006C2411 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				B9D67FA1254C443F00C2ED52 /* AuthServiceDelegate.swift */,
-				B92F837B254C0292006C2411 /* AuthService.swift */,
+				B98F411D25515225007A4187 /* Auth service */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -124,6 +127,25 @@
 				B94A4E20254C22E50066EF9A /* AuthViewController.swift */,
 			);
 			path = AuthView;
+			sourceTree = "<group>";
+		};
+		B98F411725513D4E007A4187 /* Network service */ = {
+			isa = PBXGroup;
+			children = (
+				B98F411925514BED007A4187 /* URLService.swift */,
+				B98F411425513D3A007A4187 /* VK_API.swift */,
+			);
+			path = "Network service";
+			sourceTree = "<group>";
+		};
+		B98F411D25515225007A4187 /* Auth service */ = {
+			isa = PBXGroup;
+			children = (
+				B9D67FA1254C443F00C2ED52 /* AuthServiceDelegate.swift */,
+				B92F837B254C0292006C2411 /* AuthService.swift */,
+				B98F411725513D4E007A4187 /* Network service */,
+			);
+			path = "Auth service";
 			sourceTree = "<group>";
 		};
 		B9F2A41D254BE98000B25B84 = {
@@ -303,6 +325,8 @@
 			files = (
 				B92F8381254C0324006C2411 /* StringConstants.swift in Sources */,
 				B9F2A42E254BE98000B25B84 /* ImageViewController.swift in Sources */,
+				B98F411525513D3A007A4187 /* VK_API.swift in Sources */,
+				B98F411A25514BED007A4187 /* URLService.swift in Sources */,
 				B9D67F98254C2AA400C2ED52 /* View+Extension.swift in Sources */,
 				B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */,
 				B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */,

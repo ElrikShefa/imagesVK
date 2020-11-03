@@ -66,6 +66,6 @@ extension SceneDelegate: AuthServiceDelegate {
 private extension SceneDelegate {
     
     func makeNavController() -> UIViewController {
-        return ImageViewController()
+        return UINavigationController(rootViewController: ImageViewController())
     }
 }

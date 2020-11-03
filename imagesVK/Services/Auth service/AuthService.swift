@@ -16,6 +16,10 @@ final class AuthService: NSObject {
     
     weak var delegate: AuthServiceDelegate?
     
+    var token: String? {
+        return VKSdk.accessToken()?.accessToken
+    }
+    
     override init() {
         vkSDK = VKSdk.initialize(withAppId: appID)
         super.init()
