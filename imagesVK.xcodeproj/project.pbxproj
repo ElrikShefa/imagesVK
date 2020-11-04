@@ -24,6 +24,9 @@
 		B9F2A42E254BE98000B25B84 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2A42D254BE98000B25B84 /* ImageViewController.swift */; };
 		B9F2A433254BE98700B25B84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F2A432254BE98700B25B84 /* Assets.xcassets */; };
 		B9F2A436254BE98700B25B84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F2A434254BE98700B25B84 /* LaunchScreen.storyboard */; };
+		B9FCCB13255294B3008A24C3 /* NetworkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */; };
+		B9FCCB172552955E008A24C3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB162552955E008A24C3 /* Networking.swift */; };
+		B9FCCB1A255298F4008A24C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB19255298F4008A24C3 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		B9F2A432254BE98700B25B84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9F2A435254BE98700B25B84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9F2A437254BE98700B25B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettings.swift; sourceTree = "<group>"; };
+		B9FCCB162552955E008A24C3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B9FCCB19255298F4008A24C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_imagesVK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +140,9 @@
 			children = (
 				B98F411925514BED007A4187 /* URLService.swift */,
 				B98F411425513D3A007A4187 /* VK_API.swift */,
+				B9FCCB162552955E008A24C3 /* Networking.swift */,
+				B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */,
+				B9FCCB19255298F4008A24C3 /* NetworkError.swift */,
 			);
 			path = "Network service";
 			sourceTree = "<group>";
@@ -323,15 +332,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9FCCB1A255298F4008A24C3 /* NetworkError.swift in Sources */,
 				B92F8381254C0324006C2411 /* StringConstants.swift in Sources */,
 				B9F2A42E254BE98000B25B84 /* ImageViewController.swift in Sources */,
 				B98F411525513D3A007A4187 /* VK_API.swift in Sources */,
 				B98F411A25514BED007A4187 /* URLService.swift in Sources */,
 				B9D67F98254C2AA400C2ED52 /* View+Extension.swift in Sources */,
 				B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */,
+				B9FCCB13255294B3008A24C3 /* NetworkSettings.swift in Sources */,
 				B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */,
 				B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */,
 				B9D67FA2254C443F00C2ED52 /* AuthServiceDelegate.swift in Sources */,
+				B9FCCB172552955E008A24C3 /* Networking.swift in Sources */,
 				B94A4E28254C24D50066EF9A /* BaseVC.swift in Sources */,
 				B92F837C254C0292006C2411 /* AuthService.swift in Sources */,
 				B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */,

@@ -21,7 +21,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <objc/runtime.h>
-#import "VKObject.h"
+#import <VKObject.h>
 
 /**
 Helps in objects parsing
