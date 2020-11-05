@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BDF326CF44AD0EAF6DDD995 /* Pods_imagesVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */; };
+		B91A8950255451480007D850 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A894F255451480007D850 /* NetworkingProtocol.swift */; };
 		B92F837C254C0292006C2411 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F837B254C0292006C2411 /* AuthService.swift */; };
 		B92F8381254C0324006C2411 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F8380254C0324006C2411 /* StringConstants.swift */; };
 		B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E20254C22E50066EF9A /* AuthViewController.swift */; };
@@ -27,11 +28,13 @@
 		B9FCCB13255294B3008A24C3 /* NetworkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */; };
 		B9FCCB172552955E008A24C3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB162552955E008A24C3 /* Networking.swift */; };
 		B9FCCB1A255298F4008A24C3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB19255298F4008A24C3 /* NetworkError.swift */; };
+		B9FCCB2225540A90008A24C3 /* FeedResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCB2125540A90008A24C3 /* FeedResponce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		563BEADC035D51F25BC8C98D /* Pods-imagesVK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.release.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.release.xcconfig"; sourceTree = "<group>"; };
 		ACC8E98104BCEAF8772507F7 /* Pods-imagesVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.debug.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.debug.xcconfig"; sourceTree = "<group>"; };
+		B91A894F255451480007D850 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		B92F837B254C0292006C2411 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B92F8380254C0324006C2411 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		B94A4E20254C22E50066EF9A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettings.swift; sourceTree = "<group>"; };
 		B9FCCB162552955E008A24C3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		B9FCCB19255298F4008A24C3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B9FCCB2125540A90008A24C3 /* FeedResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponce.swift; sourceTree = "<group>"; };
 		BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_imagesVK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,9 +80,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B91A894A25544BC70007D850 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B91A894F255451480007D850 /* NetworkingProtocol.swift */,
+				B9FCCB162552955E008A24C3 /* Networking.swift */,
+				B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */,
+				B9FCCB19255298F4008A24C3 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B91A894C25544BDA0007D850 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B98F411925514BED007A4187 /* URLService.swift */,
+				B98F411425513D3A007A4187 /* VK_API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		B92F837E254C0297006C2411 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B98F411725513D4E007A4187 /* Network service */,
 				B98F411D25515225007A4187 /* Auth service */,
 			);
 			path = Services;
@@ -138,11 +163,8 @@
 		B98F411725513D4E007A4187 /* Network service */ = {
 			isa = PBXGroup;
 			children = (
-				B98F411925514BED007A4187 /* URLService.swift */,
-				B98F411425513D3A007A4187 /* VK_API.swift */,
-				B9FCCB162552955E008A24C3 /* Networking.swift */,
-				B9FCCB12255294B3008A24C3 /* NetworkSettings.swift */,
-				B9FCCB19255298F4008A24C3 /* NetworkError.swift */,
+				B91A894C25544BDA0007D850 /* API */,
+				B91A894A25544BC70007D850 /* Networking */,
 			);
 			path = "Network service";
 			sourceTree = "<group>";
@@ -152,7 +174,6 @@
 			children = (
 				B9D67FA1254C443F00C2ED52 /* AuthServiceDelegate.swift */,
 				B92F837B254C0292006C2411 /* AuthService.swift */,
-				B98F411725513D4E007A4187 /* Network service */,
 			);
 			path = "Auth service";
 			sourceTree = "<group>";
@@ -179,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F2A44C254BF9A300B25B84 /* Story */,
+				B9FCCB2425540A97008A24C3 /* Model */,
 				B92F837E254C0297006C2411 /* Services */,
 				B9F2A450254BF9BE00B25B84 /* Main files */,
 				B94A4E23254C23600066EF9A /* Helpers */,
@@ -207,6 +229,14 @@
 				B9F2A437254BE98700B25B84 /* Info.plist */,
 			);
 			path = "Main files";
+			sourceTree = "<group>";
+		};
+		B9FCCB2425540A97008A24C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9FCCB2125540A90008A24C3 /* FeedResponce.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C6965DB5C1AB7AB308424875 /* Pods */ = {
@@ -335,6 +365,7 @@
 				B9FCCB1A255298F4008A24C3 /* NetworkError.swift in Sources */,
 				B92F8381254C0324006C2411 /* StringConstants.swift in Sources */,
 				B9F2A42E254BE98000B25B84 /* ImageViewController.swift in Sources */,
+				B91A8950255451480007D850 /* NetworkingProtocol.swift in Sources */,
 				B98F411525513D3A007A4187 /* VK_API.swift in Sources */,
 				B98F411A25514BED007A4187 /* URLService.swift in Sources */,
 				B9D67F98254C2AA400C2ED52 /* View+Extension.swift in Sources */,
@@ -348,6 +379,7 @@
 				B92F837C254C0292006C2411 /* AuthService.swift in Sources */,
 				B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */,
 				B9D67F9F254C3C8400C2ED52 /* Color+Extension.swift in Sources */,
+				B9FCCB2225540A90008A24C3 /* FeedResponce.swift in Sources */,
 				B94A4E2B254C250D0066EF9A /* Array+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

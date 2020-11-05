@@ -19,16 +19,15 @@ struct URLService {
 
 extension URLService {
     
- func getFeed() {
-        guard let token = authService.token else { return }
+    func getFeed() -> URL? {
+        guard let token = authService.token else { return nil }
         
         let parametrs = ["filters": "post,photo"]
         var allParametrs = parametrs
         allParametrs["access_token"] = token
         allParametrs["v"] = VK_API.version
-
-    guard let url = getUrl(VK_API.methodGetPhotos, params: allParametrs) else { return }
-        print(url)
+        
+        return getUrl(VK_API.methodGetPhotos, params: allParametrs)
     }
     
     private func getUrl(_ path: String, params: [String: String]) -> URL? {
