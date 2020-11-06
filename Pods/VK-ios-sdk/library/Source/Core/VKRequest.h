@@ -21,9 +21,9 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "VKResponse.h"
-#import "VKApiConst.h"
-#import "VKObject.h"
+#import <VKResponse.h>
+#import <VKApiConst.h>
+#import <VKObject.h>
 
 
 /**
