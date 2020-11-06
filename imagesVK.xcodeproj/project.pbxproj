@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1BDF326CF44AD0EAF6DDD995 /* Pods_imagesVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD34C34EFE4C7AB687F2B9F8 /* Pods_imagesVK.framework */; };
 		B91A8950255451480007D850 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A894F255451480007D850 /* NetworkingProtocol.swift */; };
+		B91A89542554A8B10007D850 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A89532554A8B10007D850 /* String+Extension.swift */; };
+		B91A89572554A9D60007D850 /* ImageViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A89562554A9D60007D850 /* ImageViewTableCell.swift */; };
 		B92F837C254C0292006C2411 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F837B254C0292006C2411 /* AuthService.swift */; };
 		B92F8381254C0324006C2411 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92F8380254C0324006C2411 /* StringConstants.swift */; };
 		B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A4E20254C22E50066EF9A /* AuthViewController.swift */; };
@@ -35,6 +37,8 @@
 		563BEADC035D51F25BC8C98D /* Pods-imagesVK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.release.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.release.xcconfig"; sourceTree = "<group>"; };
 		ACC8E98104BCEAF8772507F7 /* Pods-imagesVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imagesVK.debug.xcconfig"; path = "Target Support Files/Pods-imagesVK/Pods-imagesVK.debug.xcconfig"; sourceTree = "<group>"; };
 		B91A894F255451480007D850 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		B91A89532554A8B10007D850 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		B91A89562554A9D60007D850 /* ImageViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTableCell.swift; sourceTree = "<group>"; };
 		B92F837B254C0292006C2411 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B92F8380254C0324006C2411 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		B94A4E20254C22E50066EF9A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F2A42D254BE98000B25B84 /* ImageViewController.swift */,
+				B91A89562554A9D60007D850 /* ImageViewTableCell.swift */,
 			);
 			path = ImageViewController;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				B94A4E2A254C250D0066EF9A /* Array+Extension.swift */,
 				B94A4E2D254C25320066EF9A /* Collection+Extension.swift */,
 				B9D67F97254C2AA400C2ED52 /* View+Extension.swift */,
+				B91A89532554A8B10007D850 /* String+Extension.swift */,
 				B9D67F9E254C3C8400C2ED52 /* Color+Extension.swift */,
 			);
 			path = Extension;
@@ -370,11 +376,13 @@
 				B98F411A25514BED007A4187 /* URLService.swift in Sources */,
 				B9D67F98254C2AA400C2ED52 /* View+Extension.swift in Sources */,
 				B9F2A42A254BE98000B25B84 /* AppDelegate.swift in Sources */,
+				B91A89542554A8B10007D850 /* String+Extension.swift in Sources */,
 				B9FCCB13255294B3008A24C3 /* NetworkSettings.swift in Sources */,
 				B9F2A42C254BE98000B25B84 /* SceneDelegate.swift in Sources */,
 				B94A4E21254C22E50066EF9A /* AuthViewController.swift in Sources */,
 				B9D67FA2254C443F00C2ED52 /* AuthServiceDelegate.swift in Sources */,
 				B9FCCB172552955E008A24C3 /* Networking.swift in Sources */,
+				B91A89572554A9D60007D850 /* ImageViewTableCell.swift in Sources */,
 				B94A4E28254C24D50066EF9A /* BaseVC.swift in Sources */,
 				B92F837C254C0292006C2411 /* AuthService.swift in Sources */,
 				B94A4E2E254C25320066EF9A /* Collection+Extension.swift in Sources */,
