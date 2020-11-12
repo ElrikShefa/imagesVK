@@ -66,7 +66,6 @@ extension ImageViewController: UITableViewDelegate {}
 extension ImageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(newsFeedList.count)")
         return newsFeedList.count
     }
     

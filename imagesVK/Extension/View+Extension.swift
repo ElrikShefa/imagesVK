@@ -53,8 +53,32 @@ extension UIView {
     
     func centerConstraints(to view: UIView) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         return [centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 centerYAnchor.constraint(equalTo: view.centerYAnchor)]
+    }
+    
+    func setImageCellConstraints(to view: UIView,
+                                 insets: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 0)
+    ) -> [NSLayoutConstraint] {
+        
+        let topConstraint = topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top)
+        let leftConstraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left)
+        let bottomConstraint = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom)
+        
+        return [topConstraint, leftConstraint, bottomConstraint]
+    }
+    
+    func edgeLabelConstraints(_ leadingView: UIView,
+                              _ mainView: UIView,
+                                 insets: UIEdgeInsets = .init(top: 12, left: 4, bottom: 12, right: 4)
+    ) -> [NSLayoutConstraint] {
+        
+        let topConstraint = topAnchor.constraint(equalTo: mainView.topAnchor, constant: insets.top)
+        let leftConstraint = leadingAnchor.constraint(equalTo: leadingView.trailingAnchor, constant: insets.left)
+        let bottomConstraint = bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -insets.bottom)
+        let rightConstraint = trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -insets.right)
+        
+        return [topConstraint, leftConstraint, bottomConstraint, rightConstraint]
     }
 }
