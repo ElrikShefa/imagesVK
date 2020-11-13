@@ -18,11 +18,11 @@ final class ImageViewTableCell: UITableViewCell {
     
     private let postLabel = UILabel()
     private let bottomViewContainer = UIView()
-    
-    private let likeView = SupportingViewCell(image: UIImage(systemIcon: .heart), text: "1234")
-    private let commentView = SupportingViewCell(image: UIImage(systemIcon: .bubbleRight), text: "1234")
-    private let shareView = SupportingViewCell(image: UIImage(systemIcon: .arrowshapeTurnUpRight), text: "1234")
-    private let viewedView = SupportingViewCell(image:UIImage(systemIcon: .eye), text: "12K")
+
+    private let likeView = SupportingViewCell(image: UIImage(systemIcon: .heart), text: "like")
+    private let commentView = SupportingViewCell(image: UIImage(systemIcon: .bubbleRight), text: "comment")
+    private let shareView = SupportingViewCell(image: UIImage(systemIcon: .arrowshapeTurnUpRight), text: "share")
+    private let viewedView = SupportingViewCell(image:UIImage(systemIcon: .eye), text: "viewed")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,6 +38,16 @@ final class ImageViewTableCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         setupInitials()
+    }
+    
+}
+
+extension ImageViewTableCell {
+    
+    func set(viewModel: ImageViewTableCellProtocol) {
+        nameLabel.text = viewModel.name
+        dateLabel.text = viewModel.date
+        postLabel.text = viewModel.text
     }
     
 }
@@ -119,13 +129,9 @@ private extension ImageViewTableCell {
     
     private func setupInitials() {
         iconImageView.image = UIImage(systemIcon: .personFill)
-        nameLabel.text = "nameLabel"
-        dateLabel.text = "dateLabel"
-        postLabel.text = "От имени правительства Канады я поздравляю Джо Байдена и Камалу Харрис с их избранием следующим президентом и вице-президентом Соединенных Штатов Америки. Канада и Соединенные Штаты поддерживают необычные отношения, уникальные на мировой арене."
-        //        likeLabel.text = "1234"
-        //        commentLabel.text = "1234"
-        //        shareLabel.text = "5678"
-        //        viewedLabel.text = "56K"
+        nameLabel.text = nil
+        dateLabel.text = nil
+        postLabel.text = nil
     }
     
     private func addViews(_ views: [UIView], to parent: UIView) {

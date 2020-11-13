@@ -13,7 +13,7 @@ final class SupportingViewCell: UIView {
     private lazy var supportingImageView = UIImageView()
     private lazy var supportingLabel = UILabel()
     
-    convenience init(image: UIImage, text: String) {
+    convenience init(image: UIImage, text: String?) {
         self.init()
         self.supportingImageView.image = image
         self.supportingLabel.text = text
