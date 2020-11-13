@@ -12,7 +12,7 @@ final class ImageViewController: BaseVC {
     private typealias CellType = ImageViewTableCell
     
     private let urlService = URLService()
-    private var newsFeedList = [FeedItem](){
+    private var feedViewModel = ImageViewModel.init(cells: []){
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -32,7 +32,8 @@ final class ImageViewController: BaseVC {
 
             switch result {
             case .success(let response):
-                self.newsFeedList.append(contentsOf: response.response.items.map{ $0})
+                let cells = response.response.items.map{ self.convertCellModel(feedItem: $0)}
+                self.feedViewModel = ImageViewModel.init(cells: cells)
                 
             case .failure(let error):
                 
@@ -66,12 +67,13 @@ extension ImageViewController: UITableViewDelegate {}
 extension ImageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(newsFeedList.count)")
-        return newsFeedList.count
+        return feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath) as! ImageViewTableCell
+        cell.set(viewModel: feedViewModel.cells[indexPath.row])
+   
         return cell
     }
 }
@@ -92,6 +94,19 @@ private extension ImageViewController {
         var constraints = [NSLayoutConstraint]()
         constraints.append(contentsOf: tableView.edgeConstraints(to: view.safeAreaLayoutGuide))
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    func convertCellModel(feedItem: FeedItem) -> ImageViewModel.CellModel {
+        return ImageViewModel.CellModel.init(
+            iconURLString: "",
+            name: "future name",
+            date: "future date",
+            text: feedItem.text,
+            likes: String(feedItem.likes?.count ?? 0),
+            comments: String(feedItem.comments?.count ?? 0),
+            shares: String(feedItem.reposts?.count ?? 0),
+            views: String(feedItem.views?.count ?? 0)
+        )
     }
     
 }
