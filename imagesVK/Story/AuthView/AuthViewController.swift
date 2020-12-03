@@ -36,6 +36,11 @@ private extension AuthViewController {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.blue.cgColor
         
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 2.6
+        button.layer.shadowOffset = CGSize(width: 3, height: 3)
+        
         button.addTarget(self, action: #selector(signIn(_:)), for: .touchUpInside)
         
         view.addSubview(button)

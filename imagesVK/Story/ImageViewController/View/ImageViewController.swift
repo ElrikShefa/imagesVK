@@ -76,7 +76,9 @@ extension ImageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath) as! ImageViewTableCell
+        
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
+        setupCellImage(cell: cell, viewModel: feedViewModel.cells[indexPath.row])
         
         return cell
     }
@@ -101,12 +103,14 @@ private extension ImageViewController {
     }
     
     func convertCellModel(feedItem: FeedItem, profile: [Profile], groups: [Group]) -> ImageViewModel.CellModel {
+        
         let profile = self.profile(sourceId: feedItem.sourceId, profiles: profile, groups: groups)
+        let date = Date(timeIntervalSince1970: feedItem.date)
         
         return ImageViewModel.CellModel.init(
             iconURLString: profile.photo,
             name: profile.name,
-            date: "future date",
+            date: date.formatRelativeString(),
             text: feedItem.text,
             likes: String(feedItem.likes?.count ?? 0),
             comments: String(feedItem.comments?.count ?? 0),
@@ -120,6 +124,20 @@ private extension ImageViewController {
         let normalSourseId = sourceId >= 0 ? sourceId : -sourceId
         
         return profilesOrGroups.first { profile -> Bool in profile.id == normalSourseId }!
+    }
+    
+    private func setupCellImage(cell: CellType, viewModel: ImageViewTableCellProtocol) {
+        
+        ImageLoader.shared.load(withURL: viewModel.iconURLString) { data in
+            guard
+                let data = data,
+                let image = UIImage(data: data) else {
+                self.showAlert(message: "Bad data")
+                return
+            }
+            
+            cell.setImage(image: image)
+        }
     }
     
 }

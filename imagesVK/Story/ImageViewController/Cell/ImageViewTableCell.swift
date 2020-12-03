@@ -10,6 +10,15 @@ import UIKit
 
 final class ImageViewTableCell: UITableViewCell {
     
+    private var avatarImage: UIImage? {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.iconImageView.image = self.avatarImage
+            }
+        }
+    }
+    
     private let headViewContainer = UIView()
     private let iconImageView = UIImageView()
     private let headStackView = UIStackView()
@@ -18,7 +27,7 @@ final class ImageViewTableCell: UITableViewCell {
     
     private let postLabel = UILabel()
     private let bottomViewContainer = UIView()
-
+    
     private let likeView = SupportingViewCell(image: UIImage(systemIcon: .heart), text: "like")
     private let commentView = SupportingViewCell(image: UIImage(systemIcon: .bubbleRight), text: "comment")
     private let shareView = SupportingViewCell(image: UIImage(systemIcon: .arrowshapeTurnUpRight), text: "share")
@@ -48,6 +57,10 @@ extension ImageViewTableCell {
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         postLabel.text = viewModel.text
+    }
+    
+    func setImage(image: UIImage) {
+      avatarImage = image
     }
     
 }
