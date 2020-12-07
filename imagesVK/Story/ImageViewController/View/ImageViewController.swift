@@ -115,8 +115,8 @@ private extension ImageViewController {
             likes: String(feedItem.likes?.count ?? 0),
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
-            views: String(feedItem.views?.count ?? 0)
-        )
+            views: String(feedItem.views?.count ?? 0),
+            photoAttachement: photoAttachement(feedItem: feedItem))
     }
     
     func profile(sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentableProtocol {
@@ -136,8 +136,34 @@ private extension ImageViewController {
                 return
             }
             
-            cell.setImage(image: image)
+            cell.setIconImage(image: image)
         }
+        
+        if let photoAttachement = viewModel.photoAttachement {
+            
+            guard let url = photoAttachement.urlString else {
+                showAlert(message: "Wrong photoAttachement url")
+                return
+            }
+            
+            ImageLoader.shared.load(withURL: url) { data in
+                guard
+                    let data = data,
+                    let image = UIImage(data: data) else {
+                    self.showAlert(message: "Bad data")
+                    return
+                }
+                
+                cell.setPostImage(image: image)
+            }
+        }
+    }
+    
+    func photoAttachement(feedItem: FeedItem) -> ImageViewModel.ImageAttachementTableCell? {
+        guard let photos = feedItem.attachments?.compactMap({ attachement in
+            attachement.photo
+        }), let firstPhoto = photos.first else { return nil }
+        return ImageViewModel.ImageAttachementTableCell.init(urlString: firstPhoto.srcBIG, width: firstPhoto.width, height: firstPhoto.height)
     }
     
 }
