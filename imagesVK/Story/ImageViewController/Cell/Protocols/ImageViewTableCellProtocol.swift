@@ -19,4 +19,5 @@ protocol ImageViewTableCellProtocol {
     var shares: String? { get }
     var views: String? { get }
     var photoAttachement: ImageAttachementTableCellProtocol? { get }
+    var sizes: FeedCellSizes { get }
 }

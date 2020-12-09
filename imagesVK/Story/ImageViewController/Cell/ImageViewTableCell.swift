@@ -28,6 +28,7 @@ final class ImageViewTableCell: UITableViewCell {
         }
     }
     
+    private let mainContainer = UIView()
     private let headViewContainer = UIView()
     private let iconImageView = UIImageView()
     private let headStackView = UIStackView()
@@ -63,8 +64,15 @@ final class ImageViewTableCell: UITableViewCell {
         super.layoutSubviews()
         
         iconImageView.layoutIfNeeded()
-        iconImageView.layer.cornerRadius = iconImageView.frame.width * 0.1
+    
+        iconImageView.layer.cornerRadius = iconImageView.frame.width * 0.2
         iconImageView.clipsToBounds = true
+        
+        mainContainer.layer.cornerRadius = iconImageView.frame.width * 0.15
+        mainContainer.clipsToBounds = true
+
+        backgroundColor = .clear
+        selectionStyle = .none
     }
     
 }
@@ -75,14 +83,18 @@ extension ImageViewTableCell {
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         postLabel.text = viewModel.text
+        
+        postLabel.frame = viewModel.sizes.postLabelFrame
+        postImageView.frame = viewModel.sizes.attachementFrame
+        bottomViewContainer.frame = viewModel.sizes.bottomView
     }
     
     func setIconImage(image: UIImage) {
-      avatarImage = image
+        avatarImage = image
     }
     
     func setPostImage(image: UIImage) {
-      postImage = image
+        postImage = image
     }
     
 }
@@ -105,7 +117,11 @@ private extension ImageViewTableCell {
         postLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postLabel.numberOfLines = 0
         
-        addViews([headViewContainer, postLabel, postImageView, bottomViewContainer], to: self)
+        mainContainer.backgroundColor = .systemBackground
+        
+        addSubview(mainContainer)
+        
+        addViews([headViewContainer, postLabel, postImageView, bottomViewContainer], to: mainContainer)
         addViews([iconImageView, headStackView], to: headViewContainer)
         addViews([likeView, commentView, shareView, viewedView], to: bottomViewContainer)
         
@@ -113,7 +129,7 @@ private extension ImageViewTableCell {
             headStackView.addArrangedSubview(object)
         }
         
-        var constraints = [NSLayoutConstraint]()
+        var constraints = mainContainer.edgeConstraints(to: self, insets: .init(top: 8, left: 8, bottom: 8, right: 8))
         constraints.append(contentsOf: [
             headViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             headViewContainer.topAnchor.constraint(equalTo: topAnchor, constant: 8),
@@ -168,6 +184,8 @@ private extension ImageViewTableCell {
     
     private func setupInitials() {
         iconImageView.image = UIImage(systemIcon: .personFill)
+        avatarImage = nil
+        postImage = nil
         nameLabel.text = nil
         dateLabel.text = nil
         postLabel.text = nil

@@ -13,7 +13,7 @@ struct ImageViewModel {
     let cells: [CellModel]
     
     struct CellModel: ImageViewTableCellProtocol {
-       
+        
         var iconURLString: String
         var name: String
         var date: String
@@ -23,6 +23,7 @@ struct ImageViewModel {
         var shares: String?
         var views: String?
         var photoAttachement: ImageAttachementTableCellProtocol?
+        var sizes: FeedCellSizes
     }
     
     struct ImageAttachementTableCell: ImageAttachementTableCellProtocol {

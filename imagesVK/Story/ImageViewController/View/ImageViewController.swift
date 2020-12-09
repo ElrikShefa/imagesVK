@@ -24,6 +24,8 @@ final class ImageViewController: BaseVC {
     
     private lazy var tableView = UITableView()
     
+    private var layoutCalculator = LayoutCalculator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -66,7 +68,11 @@ final class ImageViewController: BaseVC {
     
 }
 
-extension ImageViewController: UITableViewDelegate {}
+extension ImageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return feedViewModel.cells[indexPath.row].sizes.totalHeght
+    }
+}
 
 extension ImageViewController: UITableViewDataSource {
     
@@ -95,6 +101,10 @@ private extension ImageViewController {
         tableView.dataSource = self
         tableView.register(CellType.self, forCellReuseIdentifier: CellType.reuseIdentifier)
         
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .blue
+        
         view.addSubview(tableView)
         
         var constraints = [NSLayoutConstraint]()
@@ -106,6 +116,7 @@ private extension ImageViewController {
         
         let profile = self.profile(sourceId: feedItem.sourceId, profiles: profile, groups: groups)
         let date = Date(timeIntervalSince1970: feedItem.date)
+        let sizes = layoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachement(feedItem: feedItem))
         
         return ImageViewModel.CellModel.init(
             iconURLString: profile.photo,
@@ -116,7 +127,9 @@ private extension ImageViewController {
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
             views: String(feedItem.views?.count ?? 0),
-            photoAttachement: photoAttachement(feedItem: feedItem))
+            photoAttachement: photoAttachement(feedItem: feedItem),
+            sizes: sizes
+        )
     }
     
     func profile(sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentableProtocol {
