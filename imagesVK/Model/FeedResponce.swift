@@ -14,6 +14,8 @@ struct FeedInfo: Decodable {
 
 struct FeedResponse: Decodable {
     let items: [FeedItem]
+    let profiles: [Profile]
+    let groups: [Group]
 }
 
 struct FeedItem: Decodable  {
@@ -25,38 +27,65 @@ struct FeedItem: Decodable  {
     let likes: CountableItem?
     let reposts: CountableItem?
     let views: CountableItem?
+    let attachments: [Attechment]?
 }
 
 struct  CountableItem: Decodable {
     let count: Int
 }
 
-//extension FeedItem: Decodable {
-//
-//    public init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        self.views = try container.decode(CountableItem.self, forKey: .views)
-//        self.reposts = try container.decode(CountableItem.self, forKey: .reposts)
-//        self.likes = try container.decode(CountableItem.self, forKey: .likes)
-//        self.comments = try container.decode(CountableItem.self, forKey: .comments)
-//        self.date = try container.decode(Double.self, forKey: .date)
-//        self.text = try container.decode(String.self, forKey: .text)
-//        self.postId = try container.decode(Int.self, forKey: .postId)
-//        self.sourceId = try container.decode(Int.self, forKey: .sourceId)
-//    }
-//}
-//
-//private extension FeedItem {
-//
-//    enum CodingKeys: String, CodingKey {
-//        case sourceId = "source_id"
-//        case postId = "post_id"
-//        case text
-//        case date
-//        case comments
-//        case likes
-//        case reposts
-//        case views
-//    }
-//}
+struct Profile: Decodable, ProfileRepresentableProtocol  {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let photo100: String
+    
+    var name: String { return firstName + " " + lastName}
+    var photo: String { return photo100}
+}
+
+struct Group: Decodable, ProfileRepresentableProtocol  {
+    let id: Int
+    let name: String
+    let photo100: String
+    
+    var photo: String { return photo100}
+}
+
+struct Attechment: Decodable {
+    let photo: Photo?
+}
+
+struct Photo: Decodable {
+    let sizes: [PhotoSize]
+    
+    var height: Int {
+        return getPropperSize().height
+    }
+    
+    var width: Int {
+        return getPropperSize().width
+    }
+    
+    var srcBIG: String {
+        return getPropperSize().url
+    }
+    
+    private func getPropperSize() -> PhotoSize {
+        if let sizeX = sizes.first(where: { $0.type == "x" }) {
+            return sizeX
+        } else if let fallBackSize = sizes.last {
+            return fallBackSize
+        } else {
+            return PhotoSize(type: "Wrong image", url: "Wrong image", width: 0, height: 0)
+        }
+    }
+}
+
+struct PhotoSize: Decodable {
+    let type: String
+    let url: String
+    let width: Int
+    let height: Int
+}
+

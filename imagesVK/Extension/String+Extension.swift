@@ -6,12 +6,26 @@
 //  Copyright © 2020 Matvey Chernyshov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     
     var url: URL? {
         return URL(string: self)
     }
+    
+}
 
+extension String {
+    
+    func height(width: CGFloat, font: UIFont) -> CGFloat {
+        let size = self.boundingRect(
+            with: CGSize(width: width, height: .greatestFiniteMagnitude),
+            options: .usesLineFragmentOrigin,
+            attributes: [NSAttributedString.Key.font : font],
+            context: nil
+        )
+        
+        return ceil(size.height)
+    }
 }

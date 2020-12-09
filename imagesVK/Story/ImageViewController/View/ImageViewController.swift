@@ -24,15 +24,21 @@ final class ImageViewController: BaseVC {
     
     private lazy var tableView = UITableView()
     
+    private var layoutCalculator = LayoutCalculator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupUI()
+        setupUI()
         Networking.fetchData(from: urlService.getFeed()) { [weak self] result in
             guard let self = self else { return }
-
+            
             switch result {
             case .success(let response):
-                let cells = response.response.items.map{ self.convertCellModel(feedItem: $0)}
+                let cells = response.response.items.map { self.convertCellModel(
+                    feedItem: $0,
+                    profile: response.response.profiles,
+                    groups: response.response.groups
+                )}
                 self.feedViewModel = ImageViewModel.init(cells: cells)
                 
             case .failure(let error):
@@ -62,7 +68,11 @@ final class ImageViewController: BaseVC {
     
 }
 
-extension ImageViewController: UITableViewDelegate {}
+extension ImageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return feedViewModel.cells[indexPath.row].sizes.totalHeght
+    }
+}
 
 extension ImageViewController: UITableViewDataSource {
     
@@ -72,8 +82,10 @@ extension ImageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath) as! ImageViewTableCell
+        
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
-   
+        setupCellImage(cell: cell, viewModel: feedViewModel.cells[indexPath.row])
+        
         return cell
     }
 }
@@ -89,6 +101,10 @@ private extension ImageViewController {
         tableView.dataSource = self
         tableView.register(CellType.self, forCellReuseIdentifier: CellType.reuseIdentifier)
         
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .blue
+        
         view.addSubview(tableView)
         
         var constraints = [NSLayoutConstraint]()
@@ -96,17 +112,71 @@ private extension ImageViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func convertCellModel(feedItem: FeedItem) -> ImageViewModel.CellModel {
+    func convertCellModel(feedItem: FeedItem, profile: [Profile], groups: [Group]) -> ImageViewModel.CellModel {
+        
+        let profile = self.profile(sourceId: feedItem.sourceId, profiles: profile, groups: groups)
+        let date = Date(timeIntervalSince1970: feedItem.date)
+        let sizes = layoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachement(feedItem: feedItem))
+        
         return ImageViewModel.CellModel.init(
-            iconURLString: "",
-            name: "future name",
-            date: "future date",
+            iconURLString: profile.photo,
+            name: profile.name,
+            date: date.formatRelativeString(),
             text: feedItem.text,
             likes: String(feedItem.likes?.count ?? 0),
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
-            views: String(feedItem.views?.count ?? 0)
+            views: String(feedItem.views?.count ?? 0),
+            photoAttachement: photoAttachement(feedItem: feedItem),
+            sizes: sizes
         )
+    }
+    
+    func profile(sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentableProtocol {
+        let profilesOrGroups: [ProfileRepresentableProtocol] = sourceId >= 0 ? profiles : groups
+        let normalSourseId = sourceId >= 0 ? sourceId : -sourceId
+        
+        return profilesOrGroups.first { profile -> Bool in profile.id == normalSourseId }!
+    }
+    
+    private func setupCellImage(cell: CellType, viewModel: ImageViewTableCellProtocol) {
+        
+        ImageLoader.shared.load(withURL: viewModel.iconURLString) { data in
+            guard
+                let data = data,
+                let image = UIImage(data: data) else {
+                self.showAlert(message: "Bad data")
+                return
+            }
+            
+            cell.setIconImage(image: image)
+        }
+        
+        if let photoAttachement = viewModel.photoAttachement {
+            
+            guard let url = photoAttachement.urlString else {
+                showAlert(message: "Wrong photoAttachement url")
+                return
+            }
+            
+            ImageLoader.shared.load(withURL: url) { data in
+                guard
+                    let data = data,
+                    let image = UIImage(data: data) else {
+                    self.showAlert(message: "Bad data")
+                    return
+                }
+                
+                cell.setPostImage(image: image)
+            }
+        }
+    }
+    
+    func photoAttachement(feedItem: FeedItem) -> ImageViewModel.ImageAttachementTableCell? {
+        guard let photos = feedItem.attachments?.compactMap({ attachement in
+            attachement.photo
+        }), let firstPhoto = photos.first else { return nil }
+        return ImageViewModel.ImageAttachementTableCell.init(urlString: firstPhoto.srcBIG, width: firstPhoto.width, height: firstPhoto.height)
     }
     
 }

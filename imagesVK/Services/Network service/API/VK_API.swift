@@ -46,6 +46,4 @@ extension VK_API {
     static let version = "5.124"
     
     static let methodGetPhotos = "/method/newsfeed.get"
-    
-    
 }
