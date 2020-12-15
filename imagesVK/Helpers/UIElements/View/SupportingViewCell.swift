@@ -13,11 +13,9 @@ final class SupportingViewCell: UIView {
     private lazy var supportingImageView = UIImageView()
     private lazy var supportingLabel = UILabel()
     
-    convenience init(image: UIImage, text: String?) {
+    convenience init(image: UIImage) {
         self.init()
         self.supportingImageView.image = image
-        self.supportingLabel.text = text
-
     }
     
     override init(frame: CGRect) {
@@ -29,6 +27,10 @@ final class SupportingViewCell: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLayout()
+    }
+    
+    func set(text: String?) {
+        supportingLabel.text = text
     }
 }
 

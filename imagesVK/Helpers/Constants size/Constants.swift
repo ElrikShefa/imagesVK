@@ -9,7 +9,7 @@
 import UIKit
 
 struct Constants {
-    static let topViewHeight: CGFloat = 36
+    static let topViewHeight: CGFloat = 40
     static let postLabelFont = UIFont.systemFont(ofSize: 15)
    
     static let cardInsets = UIEdgeInsets(top: 0, left: 8, bottom: 12, right: 8)

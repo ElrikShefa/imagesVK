@@ -39,10 +39,10 @@ final class ImageViewTableCell: UITableViewCell {
     private let postImageView = UIImageView()
     private let bottomViewContainer = UIView()
     
-    private let likeView = SupportingViewCell(image: UIImage(systemIcon: .heart), text: "like")
-    private let commentView = SupportingViewCell(image: UIImage(systemIcon: .bubbleRight), text: "comment")
-    private let shareView = SupportingViewCell(image: UIImage(systemIcon: .arrowshapeTurnUpRight), text: "share")
-    private let viewedView = SupportingViewCell(image:UIImage(systemIcon: .eye), text: "viewed")
+    private let likeView = SupportingViewCell(image: UIImage(systemIcon: .heart))
+    private let commentView = SupportingViewCell(image: UIImage(systemIcon: .bubbleRight))
+    private let shareView = SupportingViewCell(image: UIImage(systemIcon: .arrowshapeTurnUpRight))
+    private let viewedView = SupportingViewCell(image:UIImage(systemIcon: .eye))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,6 +83,11 @@ extension ImageViewTableCell {
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         postLabel.text = viewModel.text
+        
+        likeView.set(text: viewModel.likes)
+        commentView.set(text: viewModel.comments)
+        shareView.set(text: viewModel.shares)
+        viewedView.set(text: viewModel.views)
         
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachementFrame
@@ -129,11 +134,11 @@ private extension ImageViewTableCell {
             headStackView.addArrangedSubview(object)
         }
         
-        var constraints = mainContainer.edgeConstraints(to: self, insets: .init(top: 8, left: 8, bottom: 8, right: 8))
+        var constraints = mainContainer.edgeConstraints(to: self, insets: .init(top: 0, left: 8, bottom: 12, right: 8))
         constraints.append(contentsOf: [
-            headViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            headViewContainer.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            headViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            headViewContainer.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
+            headViewContainer.topAnchor.constraint(equalTo: mainContainer.topAnchor, constant: 8),
+            headViewContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
             
             iconImageView.heightAnchor.constraint(equalToConstant: 40),
             iconImageView.widthAnchor.constraint(equalToConstant: 40),
@@ -146,38 +151,34 @@ private extension ImageViewTableCell {
             headStackView.topAnchor.constraint(equalTo: headViewContainer.topAnchor, constant: 1),
             headStackView.bottomAnchor.constraint(equalTo: headViewContainer.bottomAnchor, constant: -1),
             
-            postLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            postLabel.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
             postLabel.topAnchor.constraint(equalTo: headViewContainer.bottomAnchor, constant: 8),
-            postLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            postLabel.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
             
-            postImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            postImageView.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
             postImageView.topAnchor.constraint(equalTo: postLabel.bottomAnchor, constant: 8),
-            postImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            postImageView.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
             
-            bottomViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            bottomViewContainer.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
             bottomViewContainer.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 8),
-            bottomViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            bottomViewContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
             bottomViewContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             likeView.leadingAnchor.constraint(equalTo: bottomViewContainer.leadingAnchor),
             likeView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor),
             likeView.bottomAnchor.constraint(equalTo: bottomViewContainer.bottomAnchor),
-            likeView.widthAnchor.constraint(equalToConstant: 80),
-            
+
             commentView.leadingAnchor.constraint(equalTo: likeView.trailingAnchor),
             commentView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor),
             commentView.bottomAnchor.constraint(equalTo: bottomViewContainer.bottomAnchor),
-            commentView.widthAnchor.constraint(equalToConstant: 80),
-            
+
             shareView.leadingAnchor.constraint(equalTo: commentView.trailingAnchor),
             shareView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor),
             shareView.bottomAnchor.constraint(equalTo: bottomViewContainer.bottomAnchor),
-            shareView.widthAnchor.constraint(equalToConstant: 80),
-            
+
             viewedView.trailingAnchor.constraint(equalTo: bottomViewContainer.trailingAnchor),
             viewedView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor),
             viewedView.bottomAnchor.constraint(equalTo: bottomViewContainer.bottomAnchor),
-            viewedView.widthAnchor.constraint(equalToConstant: 80),
         ])
         NSLayoutConstraint.activate(constraints)
     }
@@ -197,5 +198,4 @@ private extension ImageViewTableCell {
             object.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
 }
